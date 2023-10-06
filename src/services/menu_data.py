@@ -15,9 +15,10 @@ class MenuData:
             reader = csv.reader(csvfile)
             next(reader)
             for row in reader:
-                dish_name, price_str, ingredient_str, recipe_amount = row
-                price = float(price_str)
-                amount = int(recipe_amount)
+                dish_name = row[0]
+                price = float(row[1])
+                ingredient_str = row[2]
+                amount = int(row[3])
                 ingredient = Ingredient(ingredient_str)
                 dish = self._get_or_create_dish(dish_name, price)
                 dish.add_ingredient_dependency(ingredient, amount)
